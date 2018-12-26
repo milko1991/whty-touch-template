@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <router-link to="/index">Index</router-link>
+    hello world
   </div>
 </template>
 
