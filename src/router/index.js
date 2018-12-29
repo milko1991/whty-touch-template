@@ -3,7 +3,7 @@
  * @description: {} 开发环境下使用同步组件、生产环境下使用异步组件 //! important!!!
  * @Date: 2018-06-13 13:58:04
  * @Last Modified by: Yiool
- * @Last Modified time: 2018-12-26 10:40:11
+ * @Last Modified time: 2018-12-29 17:38:42
  */
 
 import Vue from 'vue';
@@ -18,7 +18,6 @@ Vue.use(Router);
 
 // 场景变量
 const IS_IN_JXB = process.env.SCENE === 'jxb';
-console.log(process.env);
 // const IS_IN_WECHAT = process.env.SCENE === 'wechat';
 
 const router = new Router({
