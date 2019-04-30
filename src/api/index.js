@@ -6,9 +6,9 @@
  * @Last Modified time: 2018-08-03 10:06:08
  */
 
-// import apiRequestHandler from '../utils/apiRequestHandler';
-
-const apiCollectionsMap = {
+import user from './user';
+const _api = {
+  user
 };
 
-export default apiCollectionsMap;
+export default _api;

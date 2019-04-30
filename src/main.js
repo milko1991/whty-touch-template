@@ -7,20 +7,27 @@ import 'flexible-ty';
 import App from './App';
 import router from './router';
 import store from './store/index';
+import api from './api/index';
 
-import { WechatPlugin, XButton } from 'vux';
+import {
+  WechatPlugin,
+  XButton
+} from 'vux';
 
 Vue.component('x-button', XButton);
 Vue.use(WechatPlugin);
 
 FastClick.attach(document.body);
 Vue.config.productionTip = false;
+Vue.prototype.$api = api;
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 });

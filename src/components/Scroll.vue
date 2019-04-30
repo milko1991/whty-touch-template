@@ -3,7 +3,7 @@
  * @Author: luozhao
  * @Date: 2018-12-29 14:53:41
  * @LastEditors: luozhao
- * @LastEditTime: 2018-12-29 15:16:59
+ * @LastEditTime: 2019-04-30 10:51:58
  -->
 
 <template>
@@ -80,7 +80,8 @@ export default {
           momentum: true,
           click: true,
           tap: true,
-          preventDefault: true
+          preventDefault: true,
+          useTransition: false // 关闭CSS滚动
         };
       }
     },
@@ -199,7 +200,7 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  padding-bottom: 50px;
+  overflow: hidden;
 }
 /* .wrap_loading .weui-loading {
   width: 40px;

@@ -3,7 +3,7 @@
  * @Author: luozhao
  * @Date: 2018-12-27 09:19:00
  * @LastEditors: luozhao
- * @LastEditTime: 2018-12-29 16:45:46
+ * @LastEditTime: 2019-04-30 10:59:09
  -->
 <template>
   <div class="user_scroll">
@@ -18,7 +18,7 @@
                          :key="index"
                          :notification="item"></notification-item>
       <!-- 没有更多数据插槽 -->
-      <divider slot='bottomLoading'>我是有底线的~</divider>
+      <no-more slot='bottomLoading'></no-more>
     </b-scroll>
   </div>
 </template>
@@ -36,6 +36,9 @@
 import { mapState } from 'vuex';
 export default {
   name: 'UseScroll',
+  components: {
+    NoMore: () => import('@/components/NoMore')
+  },
   data () {
     return {
       notificationList: [], // 我接手的消息列表

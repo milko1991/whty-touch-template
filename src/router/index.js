@@ -10,33 +10,38 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import store from '../store/index';
-import HelloWorld from '@/components/HelloWorld'; // 同步加载路由组件
-import Index from '@/pages/Index';
+// import HelloWorld from '@/components/HelloWorld'; // 同步加载路由组件
 // const HelloWorld = () => import(/* webpackChunkName:'HelloWorld' */ '@/components/HelloWorld'); // 异步加载路由组件
 
 Vue.use(Router);
 
 // 场景变量
-const IS_IN_JXB = process.env.SCENE === 'jxb';
+// const IS_IN_JXB = process.env.SCENE === 'jxb';
 // const IS_IN_WECHAT = process.env.SCENE === 'wechat';
 
 const router = new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: IS_IN_JXB ? HelloWorld : Index
-    }
-  ]
+  routes: [{
+    path: '/',
+    redirect: '/index'
+  }, {
+    path: '/index',
+    name: 'Index',
+    component: () => import('@/pages/Index')
+  }, {
+    path: '/helloWord',
+    name: 'HelloWorld',
+    component: () => import('@/components/HelloWorld')
+  }]
 });
 
 router.beforeEach(function (to, from, next) {
-  store.commit('updateLoadingStatus', {isLoading: true});
   next();
 });
 
 router.afterEach(function (to) {
-  store.commit('updateLoadingStatus', {isLoading: false});
+  store.commit('updateLoadingStatus', {
+    isLoading: false
+  });
 });
 
 export default router;
