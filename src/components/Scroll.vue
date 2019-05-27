@@ -3,7 +3,7 @@
  * @Author: luozhao
  * @Date: 2018-12-29 14:53:41
  * @LastEditors: luozhao
- * @LastEditTime: 2019-04-30 10:51:58
+ * @LastEditTime: 2019-05-27 15:11:25
  -->
 
 <template>
@@ -43,6 +43,7 @@
 import BS from 'better-scroll';
 import { InlineLoading } from 'vux';
 export default {
+  name: 'Scroll',
   components: {
     InlineLoading
   },
@@ -93,6 +94,7 @@ export default {
   },
   data () {
     return {
+      scroll: null,
       topMsg: '',
       topMsgArr: ['正在加载', '下拉更新数据', '松手更新数据'],
       topLoading: false,
@@ -105,7 +107,12 @@ export default {
       random: Math.floor(Math.random() * 1000000000000)
     };
   },
-  name: 'scroll',
+  activated () {
+    this.scroll.refresh();
+  },
+  deactivated () {
+    this.scroll.stop();
+  },
   mounted () {
     if (this.showPullDown) {
       this.$set(this.options, 'pullDownRefresh', {
